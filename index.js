@@ -232,7 +232,7 @@ export default class RNSketchCanvas extends React.Component {
             }
 
             {this.props.clearComponent && (
-              <TouchableOpacity onPress={() => { this.clear(); this.props.onClearPressed() }}>
+              <TouchableOpacity style={{position: "absolute", zIndex: 1}} onPress={() => { this.clear(); this.props.onClearPressed() }}>
                 {this.props.clearComponent}
               </TouchableOpacity>)
             }
