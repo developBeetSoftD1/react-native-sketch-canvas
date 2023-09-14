@@ -26,6 +26,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
+import android.content.ContextWrapper;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 class CanvasText {
     public String text;
     public Paint paint;
@@ -270,14 +274,24 @@ public class SketchCanvas extends View {
         if (success) {
             Bitmap bitmap = createImage(format.equals("png") && transparent, includeImage, includeText, cropToImageSize);
 
-            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) +
-                File.separator + folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
+            String mTimeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+
+            String mImageName = "snap_"+ mTimeStamp + ".jpg";
+
+            ContextWrapper wrapper = new ContextWrapper(mContext);
+
+            File file = wrapper.getDir("Signature",MODE_PRIVATE);
+
+            file = new File(file, "snap_"+ File.separator + folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg")));
+
+            // File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) +
+            //     File.separator + folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
             try {
                 bitmap.compress(
                     format.equals("png") ? Bitmap.CompressFormat.PNG : Bitmap.CompressFormat.JPEG,
                     format.equals("png") ? 100 : 90,
                     new FileOutputStream(file));
-                this.onSaved(true, file.getPath());
+                this.onSaved(true, file.getAbsolutePath());
             } catch (Exception e) {
                 e.printStackTrace();
                 onSaved(false, null);
