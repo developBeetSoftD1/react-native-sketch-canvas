@@ -18,6 +18,9 @@
     "svg",
     "draw"
   ],
+  "devDependencies": {
+    "deprecated-react-native-prop-types": "*"
+  },
   "nativePackage": true,
   "license": "MIT"
 }

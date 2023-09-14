@@ -9,10 +9,10 @@ import ReactNative, {
   PanResponder,
   PixelRatio,
   Platform,
-  ViewPropTypes,
   processColor
 } from 'react-native'
 import { requestPermissions } from './handlePermissions';
+import { ViewPropTypes } from 'deprecated-react-native-prop-types'
 
 const RNSketchCanvas = requireNativeComponent('RNSketchCanvas', SketchCanvas, {
   nativeOnly: {
@@ -92,7 +92,7 @@ class SketchCanvas extends React.Component {
     this.state.text = this._processText(props.text ? props.text.map(t => Object.assign({}, t)) : null)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       text: this._processText(nextProps.text ? nextProps.text.map(t => Object.assign({}, t)) : null)
     })
@@ -152,7 +152,7 @@ class SketchCanvas extends React.Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.panResponder = PanResponder.create({
       // Ask to be the responder:
       onStartShouldSetPanResponder: (evt, gestureState) => true,
@@ -217,7 +217,7 @@ class SketchCanvas extends React.Component {
     });
   }
 
-  async componentDidMount() {
+  async UNSAFE_componentDidMount() {
     const isStoragePermissionAuthorized = await requestPermissions(
       this.props.permissionDialogTitle,
       this.props.permissionDialogMessage,
