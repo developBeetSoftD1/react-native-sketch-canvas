@@ -282,7 +282,7 @@ public class SketchCanvas extends View {
 
             File file = wrapper.getDir("Signature",MODE_PRIVATE);
 
-            file = new File(file, "snap_"+ File.separator + folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg")));
+            file = new File(file, "snap_"+ File.separator + folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
 
             // File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) +
             //     File.separator + folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
