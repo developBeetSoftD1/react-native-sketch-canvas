@@ -273,7 +273,7 @@ public class SketchCanvas extends View {
 
             File file = wrapper.getDir("Signature", Context.MODE_PRIVATE);
 
-            file = new File(file, "snap_" + folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
+            file = new File(file, folder + File.separator + "snap_" + filename + (format.equals("png") ? ".png" : ".jpg"));
 
             try {
                 OutputStream stream = null;
