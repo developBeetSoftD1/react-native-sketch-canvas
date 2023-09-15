@@ -277,7 +277,7 @@ public class SketchCanvas extends View {
 
             try {
                 OutputStream stream = null;
-                stream = new FileOutputStream(file);
+                stream = new FileOutputStream(String.valueOf(file));
                 bitmap.compress(
                     format.equals("png") ? Bitmap.CompressFormat.PNG : Bitmap.CompressFormat.JPEG, 
                     format.equals("png") ? 100 : 90,
@@ -287,7 +287,7 @@ public class SketchCanvas extends View {
                 stream.close();
             } catch (Exception e) {
                 e.printStackTrace();
-                onSaved(false, null);
+                onSaved(false, String.valueOf(e));
             }
             // File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) +
             //     File.separator + folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
