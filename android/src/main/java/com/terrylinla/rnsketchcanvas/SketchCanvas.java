@@ -264,9 +264,9 @@ public class SketchCanvas extends View {
     }
 
     public void save(String format, String folder, String filename, boolean transparent, boolean includeImage, boolean includeText, boolean cropToImageSize) {
-        File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + folder);
-        boolean success = f.exists() ? true : f.mkdirs();
-        if (success) {
+        // File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + folder);
+        // boolean success = f.exists() ? true : f.mkdirs();
+        // if (success) {
             Bitmap bitmap = createImage(format.equals("png") && transparent, includeImage, includeText, cropToImageSize);
 
             ContextWrapper wrapper = new ContextWrapper(mContext);
@@ -275,11 +275,11 @@ public class SketchCanvas extends View {
 
             // file = new File(file, folder + File.separator + "snap_" + filename + (format.equals("png") ? ".png" : ".jpg"));
 
-            File sd = getCacheDir();
+            File sd = mContext.getCacheDir();
             File folderSave = new File(sd, "/signature/");
             if (!folderSave.exists()) {
                 if (!folderSave.mkdir()) {
-                    Log.e("ERROR", "Cannot create a directory!");
+                    Log.e("SketchCanvas", "Cannot create a directory!");
                 } else {
                     folderSave.mkdirs();
                 }
@@ -313,10 +313,10 @@ public class SketchCanvas extends View {
             //     e.printStackTrace();
             //     onSaved(false, null);
             // }
-        } else {
-            Log.e("SketchCanvas", "Failed to create folder!");
-            onSaved(false, null);
-        }
+        // } else {
+        //     Log.e("SketchCanvas", "Failed to create folder!");
+        //     onSaved(false, null);
+        // }
     }
 
     public String getBase64(String format, boolean transparent, boolean includeImage, boolean includeText, boolean cropToImageSize) {
