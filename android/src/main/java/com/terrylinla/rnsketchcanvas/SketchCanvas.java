@@ -277,11 +277,11 @@ public class SketchCanvas extends View {
 
             File sd = getCacheDir();
             File folderSave = new File(sd, "/signature/");
-            if (!folder.exists()) {
-                if (!folder.mkdir()) {
+            if (!folderSave.exists()) {
+                if (!folderSave.mkdir()) {
                     Log.e("ERROR", "Cannot create a directory!");
                 } else {
-                    folder.mkdirs();
+                    folderSave.mkdirs();
                 }
             }
 
