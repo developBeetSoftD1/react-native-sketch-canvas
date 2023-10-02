@@ -280,6 +280,7 @@ public class SketchCanvas extends View {
             if (!folderSave.exists()) {
                 if (!folderSave.mkdir()) {
                     Log.e("SketchCanvas", "Cannot create a directory!");
+                    onSaved(false, null);
                 } else {
                     folderSave.mkdirs();
                 }
