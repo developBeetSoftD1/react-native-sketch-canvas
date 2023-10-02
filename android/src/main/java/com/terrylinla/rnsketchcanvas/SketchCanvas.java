@@ -276,7 +276,7 @@ public class SketchCanvas extends View {
             // file = new File(file, folder + File.separator + "snap_" + filename + (format.equals("png") ? ".png" : ".jpg"));
 
             File sd = getCacheDir();
-            File folder = new File(sd, "/signature/");
+            File folderSave = new File(sd, "/signature/");
             if (!folder.exists()) {
                 if (!folder.mkdir()) {
                     Log.e("ERROR", "Cannot create a directory!");
@@ -285,7 +285,7 @@ public class SketchCanvas extends View {
                 }
             }
 
-            File fileName = new File(folder, folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
+            File file = new File(folderSave, folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
 
             try {
                 OutputStream stream = null;
