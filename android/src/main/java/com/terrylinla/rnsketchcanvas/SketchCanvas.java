@@ -33,6 +33,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import java.util.Objects;
+
 class CanvasText {
     public String text;
     public Paint paint;
@@ -276,7 +278,7 @@ public class SketchCanvas extends View {
             // file = new File(file, folder + File.separator + "snap_" + filename + (format.equals("png") ? ".png" : ".jpg"));
 
             File sd = mContext.getCacheDir();
-            File folderSave = new File(sd, "/signature/");
+            File folderSave = new File(sd, !Objects.equals(folder, "undefined") ? (File.separator + folder + File.separator): "/signature/");
             if (!folderSave.exists()) {
                 if (!folderSave.mkdir()) {
                     Log.e("SketchCanvas", "Cannot create a directory!");
@@ -286,7 +288,7 @@ public class SketchCanvas extends View {
                 }
             }
 
-            File file = new File(folderSave, folder + File.separator + filename + (format.equals("png") ? ".png" : ".jpg"));
+            File file = new File(folderSave, filename + (format.equals("png") ? ".png" : ".jpg"));
 
             try {
                 OutputStream stream = null;
