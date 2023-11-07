@@ -408,8 +408,8 @@ public class SketchCanvas extends View {
     private Bitmap createImage(boolean transparent, boolean includeImage, boolean includeText, boolean cropToImageSize) {
         Bitmap bitmap = Bitmap.createBitmap(mBackgroundImage != null && cropToImageSize ? mOriginalWidth : getWidth(), mBackgroundImage != null && cropToImageSize ? mOriginalHeight : getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
-        canvas.drawColor(Color.BLUE); // hashcode from smdc
-//        canvas.drawARGB(transparent ? 0 : 255, 255, 255, 255);
+        // canvas.drawColor(Color.BLUE); // hashcode from smdc
+       canvas.drawARGB(transparent ? 0 : 255, 255, 255, 255);
 
         if (mBackgroundImage != null && includeImage) {
             Rect targetRect = new Rect();

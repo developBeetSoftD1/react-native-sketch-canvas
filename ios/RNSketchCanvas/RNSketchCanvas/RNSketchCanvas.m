@@ -302,11 +302,11 @@
         CGRect rect = CGRectMake(0, 0, _backgroundImage.size.width, _backgroundImage.size.height);
         UIGraphicsBeginImageContextWithOptions(rect.size, !transparent, 1);
         CGContextRef context = UIGraphicsGetCurrentContext();
-        //        if (!transparent) {
-        CGContextSetRGBFillColor(context, 0,0,1.0, 1);
-        //            CGContextSetRGBFillColor(context, 1.0f, 1.0f, 1.0f, 1.0f); // comment from smdc
-        CGContextFillRect(context, rect);
-        //        }
+        if (!transparent) {
+            // CGContextSetRGBFillColor(context, 0,0,1.0, 1); // hashcode from smdc
+            CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 1.0f); 
+            CGContextFillRect(context, rect);
+        }
         CGRect targetRect = [Utility fillImageWithSize:self.bounds.size toSize:rect.size contentMode:@"AspectFill"];
         if (includeImage) {
             [_backgroundImage drawInRect:rect];
@@ -335,11 +335,11 @@
         CGRect rect = self.bounds;
         UIGraphicsBeginImageContextWithOptions(rect.size, !transparent, 0);
         CGContextRef context = UIGraphicsGetCurrentContext();
-        //        if (!transparent) {
-        CGContextSetRGBFillColor(context, 0,0,1.0, 1);
-        //            CGContextSetRGBFillColor(context, 1.0f, 1.0f, 1.0f, 1.0f); // comment from smdc
-        CGContextFillRect(context, rect);
-        //        }
+        if (!transparent) {
+            // CGContextSetRGBFillColor(context, 0,0,1.0, 1); // hashcode from smdc
+            CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 1.0f); 
+            CGContextFillRect(context, rect);
+        }
         if (_backgroundImage && includeImage) {
             CGRect targetRect = [Utility fillImageWithSize:_backgroundImage.size toSize:rect.size contentMode:_backgroundImageContentMode];
             [_backgroundImage drawInRect:targetRect];
