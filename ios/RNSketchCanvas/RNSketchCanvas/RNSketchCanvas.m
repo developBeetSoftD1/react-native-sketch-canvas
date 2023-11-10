@@ -304,8 +304,8 @@
         CGContextRef context = UIGraphicsGetCurrentContext();
         if (!transparent) {
             // CGContextSetRGBFillColor(context, 0,0,1.0, 1); // hashcode from smdc
-            CGContextSetRGBFillColor(context, 1.0f, 1.0f, 1.0f, 1.0f);
-            // CGContextSetFillColorWithColor(context,  [UIColor whiteColor].CGColor) 
+            // CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 1.0f); 
+            CGContextSetFillColorWithColor(context,  [UIColor whiteColor].CGColor); 
             CGContextFillRect(context, rect);
         }
         CGRect targetRect = [Utility fillImageWithSize:self.bounds.size toSize:rect.size contentMode:@"AspectFill"];
@@ -338,7 +338,8 @@
         CGContextRef context = UIGraphicsGetCurrentContext();
         if (!transparent) {
             // CGContextSetRGBFillColor(context, 0,0,1.0, 1); // hashcode from smdc
-            CGContextSetRGBFillColor(context, 1.0f, 1.0f, 1.0f, 1.0f);
+            // CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 1.0f); 
+            CGContextSetFillColorWithColor(context,  [UIColor whiteColor].CGColor); 
             CGContextFillRect(context, rect);
         }
         if (_backgroundImage && includeImage) {
